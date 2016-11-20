@@ -69,10 +69,11 @@ class SDS011Reader:
                     ))
                 time.sleep(1)
             except KeyboardInterrupt:
-                    print "Bye"
-                    sys.exit()
+                print "Bye"
+                sys.exit()
             except:
-                    print("oops...")
+                e = sys.exc_info()[0]
+                print("Can not read the sensor data: "+str(e))
 
         values = []
         for i in range(len(species)):
