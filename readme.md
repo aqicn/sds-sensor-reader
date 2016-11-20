@@ -3,7 +3,7 @@
 
 This python script can be used to read the data from the SDS011/SDS18/SDS021 and upload it to the the aqicn.org server.
 
-The script continuously read the sensor data, and every minute, will upload the averge, median and standard deviation data to the server.
+The script continuously reads the data from the SDS sensor, and, every minute, uploads the averge, median and standard deviation to the server.
 
 # Installation
 
@@ -12,7 +12,7 @@ Make sure to update the `USB port` and `sensor ID` configuration in the script, 
     SENSORID = "YOUR-SENSOR-ID"
     USBPORT  = "/dev/ttyUSB0"
 
-For the `SENSORID`, use a name like `country.city.organization.sensor-name`. For instance `usa.nyc.nuy.outdoor-01` or `uae.dubai.johndoe.outdoor-patio`.
+For the `SENSORID`, use a name like `country.city.organization|name.sensor-name`. For instance `usa.nyc.nuy.outdoor-01` or `uae.dubai.johndoe.outdoor-patio`.
 
 For the USB port, you need to check on which USB port is the serial USB converter mounted. Check https://learn.sparkfun.com/tutorials/terminal-basics/connecting-to-your-device for more information.
 
