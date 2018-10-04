@@ -1,9 +1,9 @@
 
 # SDS Sensor Reader
 
-This python script can be used to read the data from the SDS011/SDS18/SDS021 and upload it to the the aqicn.org server.
+This python script can be used to read the data from the SDS011/SDS18/SDS021 and upload it to the aqicn.org server.
 
-The script continuously reads the data from the SDS sensor, and, every minute, uploads the averge, median and standard deviation to the server.
+The script continuously reads the data from the SDS sensor, and, every minute, uploads the average, median and standard deviation to the server.
 
 # Installation
 
