@@ -5,6 +5,9 @@ This python script can be used to read the data from the SDS011/SDS18/SDS021 and
 
 The script continuously reads the data from the SDS sensor, and, every minute, uploads the average, median and standard deviation to the server.
 
+
+For more information, refer to https://aqicn.org/data-feed/upload-api/
+
 # Installation
 
 Make sure to update the `USB port` and `sensor ID` configuration in the script, lines 9 to 12:
