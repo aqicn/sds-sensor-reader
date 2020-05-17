@@ -7,15 +7,18 @@ The script continuously reads the data from the SDS sensor, and, every minute, u
 
 # Installation
 
-Make sure to update the `USB port` and `sensor ID` configuration in the script, line 15 and 16:
+Make sure to update the `USB port` and `sensor ID` configuration in the script, lines 9 to 12:
 
+    LOCATION = {'latitude': 28.7501, 'longitude': 77.1177}
+    TOKEN    = "dummy-token-for-test-purpose-only"
     SENSORID = "YOUR-SENSOR-ID"
     USBPORT  = "/dev/ttyUSB0"
 
-For the `SENSORID`, use a name like `country.city.organization|name.sensor-name`. For instance `usa.nyc.nuy.outdoor-01` or `uae.dubai.johndoe.outdoor-patio`.
+For the `TOKEN`, you can get one from this page: https://aqicn.org/data-platform/token/
 
-For the USB port, you need to check on which USB port is the serial USB converter mounted. Check https://learn.sparkfun.com/tutorials/terminal-basics/connecting-to-your-device for more information.
+For the `SENSORID`, you can use any name less than 128 characters. This ID is only used for you to help if you have multiple sensors.
 
+For the `USBPORT`, you need to check on which USB port is the serial USB converter mounted. Check https://learn.sparkfun.com/tutorials/terminal-basics/connecting-to-your-device for more information.
 
 # Running the script
 
@@ -24,21 +27,42 @@ Just use: `python sds-reader.py`
 Output example:
 
     Starting reading sensor YOUR-SENSOR-ID on port /dev/ttyUSB0
-    [ 0.8] Samples: 1 PM2.5: 335 PM10: 642 StdDev(PM2.5):0.0
-    [ 1.8] Samples: 2 PM2.5: 328 PM10: 625 StdDev(PM2.5):3.5
-    [ 2.8] Samples: 3 PM2.5: 323 PM10: 613 StdDev(PM2.5):4.9
-    [ 3.8] Samples: 4 PM2.5: 318 PM10: 601 StdDev(PM2.5):6.3
-    [ 4.8] Samples: 5 PM2.5: 310 PM10: 577 StdDev(PM2.5):8.5
-    [ 5.8] Samples: 6 PM2.5: 307 PM10: 569 StdDev(PM2.5):9.8
+    Reading [ 1]: {'pm2.5': 6.174900567257725, 'pm10': 3.1934677522143726}
+    Reading [ 2]: {'pm2.5': 7.555017736539956, 'pm10': 7.020834793042507}
+    Reading [ 3]: {'pm2.5': 0.3844247110354293, 'pm10': 7.771734774405182}
+    Reading [ 4]: {'pm2.5': 3.22681824227835, 'pm10': 2.3183160649668055}
+    Reading [ 5]: {'pm2.5': 6.571437982807612, 'pm10': 8.10732336965939}
+    Reading [ 6]: {'pm2.5': 2.215579055773339, 'pm10': 8.498171362504383}
+    Reading [ 7]: {'pm2.5': 8.027524718085807, 'pm10': 5.8429776102899025}
+    Reading [ 8]: {'pm2.5': 6.2517504261702515, 'pm10': 2.263619703316302}
     ...
-    [54.2] Samples:55 PM2.5: 315 PM10: 568 StdDev(PM2.5):7.5
-    [55.2] Samples:56 PM2.5: 313 PM10: 569 StdDev(PM2.5):7.6
-    [56.2] Samples:57 PM2.5: 312 PM10: 565 StdDev(PM2.5):7.6
-    [57.2] Samples:58 PM2.5: 311 PM10: 563 StdDev(PM2.5):7.7
-    [58.2] Samples:59 PM2.5: 315 PM10: 570 StdDev(PM2.5):7.7
-    [59.2] Samples:60 PM2.5: 316 PM10: 572 StdDev(PM2.5):7.7
-    Posting 673 bytes -> 200 OK 
-    Data posting ok!
-    upload queue(...): all done.
-    [ 0.0] Samples: 1 PM2.5: 313 PM10: 567 StdDev(PM2.5):0.0
-    [ 1.0] Samples: 2 PM2.5: 312 PM10: 567 StdDev(PM2.5):0.5
+    Reading [60]: {'pm2.5': 5.775826608467894, 'pm10': 2.6825255819326377}
+    Uploading: {
+        "token": "dummy-token-for-test-purpose-only",
+        "station": {
+            "id": "YOUR-SENSOR-ID",
+            "location": {
+                "latitude": 28.7501,
+                "longitude": 77.1177
+            }
+        },
+        "readings": [
+            {
+                "specie": "pm2.5",
+                "min": 0.3844247110354293,
+                "max": 9.881988173998357,
+                "median": 5.775826608467894,
+                "value": 5.370915456820213,
+                "stddev": 2.6854456309512917
+            },
+            {
+                "specie": "pm10",
+                "min": 0.016951997552983045,
+                "max": 9.79528005515607,
+                "median": 5.114991470114239,
+                "value": 4.877448712778561,
+                "stddev": 2.8556849925322383
+            }
+        ]
+    }
+    Data successfully posted: {u'status': u'ok', u'station': 1000003}    
