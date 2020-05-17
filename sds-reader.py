@@ -162,7 +162,7 @@ print("Starting reading sensor "+SENSORID+" on port "+USBPORT)
 station = {'id':SENSORID, 'location':LOCATION}
 uploader = SensorDataUploader(station, TOKEN)
 
-# sensor = SDS011Reader(USBPORT)
-sensor = DummyReader()
+sensor = SDS011Reader(USBPORT)
+# sensor = DummyReader()
 readAndUpload(sensor,uploader)
 
